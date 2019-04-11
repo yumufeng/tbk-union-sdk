@@ -1,0 +1,26 @@
+{
+  "name": "yumufeng/tbk-union-sdk",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "yumufeng",
+      "email": "admin@yumufeng.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "autoload": {
+    "classmap": [
+    ],
+    "psr-4": {
+      "TaobaoUnionSdk\\": "src"
+    }
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.laravel-china.org"
+    }
+  }
+}
