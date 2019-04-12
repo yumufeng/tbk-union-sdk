@@ -2,6 +2,29 @@
 
 namespace TaobaoUnionSdk;
 
+use TaobaoUnionSdk\Api\Coupon;
+use TaobaoUnionSdk\Api\Dg;
+use TaobaoUnionSdk\Api\Item;
+use TaobaoUnionSdk\Api\Ju;
+use TaobaoUnionSdk\Api\Order;
+use TaobaoUnionSdk\Api\Sc;
+use TaobaoUnionSdk\Api\Shop;
+use TaobaoUnionSdk\Api\Tpwd;
+use TaobaoUnionSdk\Api\Uatm;
+
+/**
+ * Class TbkFatory
+ * @property Coupon coupon
+ * @property Dg dg
+ * @property Item item
+ * @property Ju ju
+ * @property Order order
+ * @property Sc sc
+ * @property Shop shop
+ * @property Tpwd tpwd
+ * @property Uatm uatm
+ * @package TaobaoUnionSdk
+ */
 class TbkFatory
 {
     private $config;

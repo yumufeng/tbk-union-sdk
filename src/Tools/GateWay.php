@@ -33,6 +33,7 @@ class GateWay
         'appkey' => '',
         'secretKey' => '',
         'format' => 'json',
+        'session' => '',//授权接口（sc类的接口）需要带上
         'signMethod' => 'md5',
         'apiVersion' => '2.0',
         'sandbox' => false,
@@ -45,7 +46,7 @@ class GateWay
 
     public function __construct($config, TbkFatory $fatory)
     {
-        $this->globalConfig = $config;
+        $this->globalConfig = array_merge($this->globalConfig, $config);
         $this->tbkFatory = $fatory;
     }
 
@@ -60,12 +61,11 @@ class GateWay
         $sysParams["timestamp"] = \date("Y-m-d H:i:s");
         $sysParams["sign"] = $this->generateSign(array_merge($params, $sysParams), $this->globalConfig['secretKey']);
         $requestUrl = $this->unionUrl . '?' . http_build_query($sysParams);
-        $requestUrl = substr($requestUrl, 0, -1);
         try {
             $resp = Helpers::curl_post($requestUrl, $params);
             $info = json_decode($resp, true);
             if (isset($info['error_response'])) {
-                $this->tbkFatory->setError($info['error_response']['sub_msg']);
+                $this->tbkFatory->setError($info['error_response']['sub_code'] . ' ' . $info['error_response']['sub_msg']);
                 return false;
             }
             return \current($info);
