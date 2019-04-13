@@ -76,10 +76,14 @@ class Item extends GateWay
     }
 
     /**
+     * taobao.tbk.item.guess.like( 淘宝客商品猜你喜欢 )
+     * @link https://open.taobao.com/api.htm?docId=29528&docType=2
      * @param array $params
+     * @return bool|mixed
      */
     public function guessLike(array $params)
     {
-
+        $result = $this->send('taobao.tbk.item.guess.like', $params);
+        return $result;
     }
 }
