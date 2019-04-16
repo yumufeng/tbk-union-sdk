@@ -58,10 +58,6 @@ print_r($res);
 | taobao.tbk.sc.newuser.order.sum (拉新活动汇总API--社交)     |    \$app->sc->sumOrderNewUser()  |
 | taobao.tbk.sc.optimus.material (淘宝客擎天柱通用物料API - 社交)     |    \$app->sc->materialOptimus()  |
 | taobao.tbk.activitylink.get( 淘宝联盟官方活动推广API-媒体 )     |    \$app->content->getActivityLink()  |
-| taobao.tbk.sc.activitylink.toolget( 淘宝联盟官方活动推广API-工具 )     |    \$app->sc->getActivityTool()  |
-| taobao.tbk.dg.punish.order.get( 处罚订单查询 -导购-私域用户管理专用 )     |    \$app->dg->getPunishOrder()  |
-| taobao.tbk.order.get( 淘宝客订单查询 )     |    \$app->order->get()  |
-| taobao.tbk.relation.refund( 淘宝客维权退款订单查询-私域用户管理专用 )     |    \$app->order->getRefund()  |
 
 
 ## 支持

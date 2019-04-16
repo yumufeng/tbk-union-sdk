@@ -2,6 +2,7 @@
 
 namespace TaobaoUnionSdk;
 
+use TaobaoUnionSdk\Api\Content;
 use TaobaoUnionSdk\Api\Coupon;
 use TaobaoUnionSdk\Api\Dg;
 use TaobaoUnionSdk\Api\Item;
@@ -23,6 +24,7 @@ use TaobaoUnionSdk\Api\Uatm;
  * @property Shop shop
  * @property Tpwd tpwd
  * @property Uatm uatm
+ * @property Content content
  * @package TaobaoUnionSdk
  */
 class TbkFatory
@@ -36,7 +38,6 @@ class TbkFatory
             throw new \Exception('no config');
         }
         $this->config = $config;
-        return $this;
     }
 
     public function __get($api)
