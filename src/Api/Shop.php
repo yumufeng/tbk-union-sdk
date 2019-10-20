@@ -11,6 +11,8 @@ class Shop extends GateWay
     /**
      * taobao.tbk.shop.get( 淘宝客店铺查询 )
      * @link https://open.taobao.com/api.htm?docId=24521&docType=2
+     * @param array $param
+     * @return array|bool|mixed
      */
     public function get(array $param)
     {
