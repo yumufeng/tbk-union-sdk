@@ -25,12 +25,18 @@ $config = [
 
 $client = new \TaobaoUnionSdk\TbkFatory($config);
 
-$num_iids = ''; //商品ID
-$platform = 1; //平台
-$ip = '' ;//ip
+$result = $client->Tools->create([
+    'text' => '【小树苗】儿童牙膏无氟可吞咽牙膏',
+    'url' => 'https://uland.taobao.com/coupon/edetail?e=O60EAyHyKIpt3vqbdXnGlivNjFRkusPB5djj77wlO1yRouJg2hy9lJ7clY2Hw1o40khhwrZzASf9g1RlPpGU2hmFTDIT3kLkWOGP4KauORrEQlnWllxAq7Da9SMviYqQfo0s4juXT4zk4UQqwowTnTclmaPT%2FN8Oi5zCOSkadsc%3D&af=1&pid=mm_29563340_122900348_29874650260',
+    'logo' => 'http://imgproxy.18cap.cn/imgextra/i3/1060894880/*o1*c*n01n8*p*b*g41lv5*jdeej6r_!!1060894880.jpg_400x400.jpg'
+]);
 
-$res = $client->item->get($num_iids,$platform,$ip);
-print_r($res);
+if ($result == false) {
+    var_dump($client->getError());
+}
+
+echo json_encode($result);
+
 ```
 
 ## 说明文档

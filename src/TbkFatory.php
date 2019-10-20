@@ -10,11 +10,12 @@ use TaobaoUnionSdk\Api\Ju;
 use TaobaoUnionSdk\Api\Order;
 use TaobaoUnionSdk\Api\Sc;
 use TaobaoUnionSdk\Api\Shop;
-use TaobaoUnionSdk\Api\Tpwd;
+use TaobaoUnionSdk\Api\Tools;
 use TaobaoUnionSdk\Api\Uatm;
 
 /**
  * Class TbkFatory
+ * @property Content content
  * @property Coupon coupon
  * @property Dg dg
  * @property Item item
@@ -22,9 +23,8 @@ use TaobaoUnionSdk\Api\Uatm;
  * @property Order order
  * @property Sc sc
  * @property Shop shop
- * @property Tpwd tpwd
+ * @property Tools tools
  * @property Uatm uatm
- * @property Content content
  * @package TaobaoUnionSdk
  */
 class TbkFatory
