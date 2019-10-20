@@ -6,35 +6,13 @@ use TaobaoUnionSdk\Tools\GateWay;
 
 class Item extends GateWay
 {
-
-    /**
-     * taobao.tbk.item.get( 淘宝客商品查询 )
-     * @link https://open.taobao.com/api.htm?docId=24515&docType=2
-     * @param array $param
-     * @return bool|mixed
-     */
-    public function get(array $param)
-    {
-        if (!isset($param['fields'])) {
-            $param['fields'] = 'num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick';
-        }
-        $result = $this->send('taobao.tbk.item.get', $param);
-        if (empty($result)) {
-            return $result;
-        }
-        return [
-            'lists' => $result['results']['n_tbk_item'],
-            'total' => $result['total_results']
-        ];
-    }
-
     /**
      * taobao.tbk.item.recommend.get( 淘宝客商品关联推荐查询 )
-     * @link https://open.taobao.com/api.htm?docId=24517&docType=2&scopeId=11655
+     * @link https://open.taobao.com/api.htm?docId=24517&docType=2
      * @param array $param
      * @return bool|mixed
      */
-    public function getRecommend(array $param)
+    public function recommend(array $param)
     {
         if (!isset($param['fields'])) {
             $param['fields'] = 'num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url';
@@ -45,13 +23,13 @@ class Item extends GateWay
 
     /**
      * taobao.tbk.item.info.get (淘宝客商品详情（简版）)
-     * @link https://open.taobao.com/api.htm?docId=24518&docType=2&scopeId=11655
+     * @link https://open.taobao.com/api.htm?docId=24518&docType=2
      * @param $num_iids
      * @param int $platform
      * @param string $ip
      * @return bool|mixed
      */
-    public function getInfo($num_iids, $platform = 1, $ip = '')
+    public function get($num_iids, $platform = 1, $ip = '')
     {
         $params = [
             'num_iids' => $num_iids,
@@ -76,14 +54,12 @@ class Item extends GateWay
     }
 
     /**
-     * taobao.tbk.item.guess.like( 淘宝客商品猜你喜欢 )
-     * @link https://open.taobao.com/api.htm?docId=29528&docType=2
-     * @param array $params
-     * @return bool|mixed
+     * taobao.tbk.item.word.get( 淘宝客-推广者-商品出词 )
+     * @link https://open.taobao.com/api.htm?docId=37538&docType=2
      */
-    public function guessLike(array $params)
+    public function word(array $params)
     {
-        $result = $this->send('taobao.tbk.item.guess.like', $params);
-        return $result;
+        $result = $this->send('taobao.tbk.item.word.get', $params);
+        return \current($result);
     }
 }

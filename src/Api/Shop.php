@@ -33,7 +33,7 @@ class Shop extends GateWay
      * @param array $param
      * @return bool|mixed
      */
-    public function getRecommend(array $param)
+    public function recommend(array $param)
     {
         if (!isset($param['fields'])) {
             $param['fields'] = 'user_id,shop_title,shop_type,seller_nick,pict_url,shop_url';

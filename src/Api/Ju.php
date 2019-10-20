@@ -14,7 +14,7 @@ class Ju extends GateWay
      * @param array $params
      * @return array|bool|mixed
      */
-    public function getTqg(array $params)
+    public function tqg(array $params)
     {
         if (!isset($params['fields'])) {
             $params['fields'] = 'click_url,pic_url,reserve_price,zk_final_price,total_amount,sold_num,title,category_name,start_time,end_time';

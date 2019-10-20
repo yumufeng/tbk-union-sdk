@@ -8,42 +8,45 @@ use TaobaoUnionSdk\Tools\GateWay;
 
 class Sc extends GateWay
 {
-
     /**
-     * taobao.tbk.sc.newuser.order.get( 淘宝客新用户订单API--社交 )
-     * @link https://open.taobao.com/api.htm?docId=33897&docType=2
+     * taobao.tbk.sc.invitecode.get( 淘宝客-公用-私域用户邀请码生成 )
+     * @link https://open.taobao.com/api.htm?docId=38046&docType=2
      * @param array $params
      * @return bool
      */
-    public function getNewUserOrder(array $params)
+    public function inviteCode(array $params)
     {
-        $result = $this->send('taobao.tbk.sc.newuser.order.get', $params);
-        return isset($result['results']['data']) ? $result['results']['data'] : false;
-    }
-
-
-    /**
-     * taobao.tbk.sc.newuser.order.sum( 拉新活动汇总API--社交 )
-     * @link https://open.taobao.com/api.htm?docId=36836&docType=2
-     * @param array $params
-     * @return mixed
-     */
-    public function sumOrderNewUser(array $params)
-    {
-        $result = $this->send('taobao.tbk.sc.newuser.order.sum', $params);
-        $da = $result['results']['data'] ?? false;
-        return $da;
+        $result = $this->send('taobao.tbk.sc.invitecode.get', $params);
+        return isset($result['data']) ? $result['data'] : false;
     }
 
     /**
-     * taobao.tbk.sc.optimus.material( 淘宝客擎天柱通用物料API - 社交 )
-     * @link https://open.taobao.com/api.htm?docId=33947&docType=2
+     * taobao.tbk.sc.publisher.info.get( 淘宝客-公用-私域用户备案信息查询 )
+     * @link https://open.taobao.com/api.htm?docId=37989&docType=2
      * @param array $params
-     * @return bool
+     * @return bool|mixed
      */
-    public function materialOptimus(array $params)
+    public function publisherInfoGet(array $params)
     {
-        $result = $this->send('taobao.tbk.sc.optimus.material', $params);
-        return $result['result_list']['map_data'] ?? false;
+        $result = $this->send('taobao.tbk.sc.publisher.info.get', $params);
+        if (empty($result)) {
+            return $result;
+        }
+        return \current($result);
+    }
+
+    /**
+     * taobao.tbk.sc.publisher.info.save( 淘宝客-公用-私域用户备案 )
+     * @link https://open.taobao.com/api.htm?docId=37988&docType=2
+     * @param array $params
+     * @return bool|mixed
+     */
+    public function publisherInfoSave(array $params)
+    {
+        $result = $this->send('taobao.tbk.sc.publisher.info.save', $params);
+        if (empty($result)) {
+            return $result;
+        }
+        return \current($result);
     }
 }
