@@ -13,7 +13,7 @@ class GateWay
      * @link https://open.taobao.com/api.htm?docId=24515&docType=2
      * @var string 淘宝联盟官网URL
      */
-    protected $unionUrl = 'http://gw.api.taobao.com/router/rest';
+    protected $unionUrl = 'https://eco.taobao.com/router/rest';
     /**
      * @link https://open.21ds.cn/index/index/openapi/id/72.shtml
      * @var string 21ds.cn 喵有券
@@ -50,7 +50,7 @@ class GateWay
         $this->tbkFatory = $fatory;
     }
 
-    public function send($method, array $params)
+    protected function send($method, array $params)
     {
         //组装系统参数
         $sysParams["app_key"] = $this->globalConfig['appkey'];
@@ -64,8 +64,13 @@ class GateWay
         try {
             $resp = Helpers::curl_post($requestUrl, $params);
             $info = json_decode($resp, true);
+            if ($this->globalConfig['sandbox']) {
+                var_dump($info);
+            }
             if (isset($info['error_response'])) {
-                $this->tbkFatory->setError($info['error_response']['sub_code'] . ' ' . $info['error_response']['sub_msg']);
+                $code = isset($info['error_response']['code']) ? $info['error_response']['code'] : $info['error_response']['sub_code'];
+                $msg = isset($info['error_response']['msg']) ? $info['error_response']['msg'] : $info['error_response']['sub_msg'];
+                $this->tbkFatory->setError($code . ' ' . $msg);
                 return false;
             }
             return \current($info);

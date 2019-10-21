@@ -13,10 +13,13 @@ $config = [
 
 $client = new \TaobaoUnionSdk\TbkFatory($config);
 
-$result = $client->tools->createTpwd([
-    'text' => '【小树苗】儿童牙膏无氟可吞咽牙膏',
-    'url' => 'https://uland.taobao.com/coupon/edetail?e=O60EAyHyKIpt3vqbdXnGlivNjFRkusPB5djj77wlO1yRouJg2hy9lJ7clY2Hw1o40khhwrZzASf9g1RlPpGU2hmFTDIT3kLkWOGP4KauORrEQlnWllxAq7Da9SMviYqQfo0s4juXT4zk4UQqwowTnTclmaPT%2FN8Oi5zCOSkadsc%3D&af=1&pid=mm_29563340_122900348_29874650260',
-    'logo' => 'http://imgproxy.18cap.cn/imgextra/i3/1060894880/*o1*c*n01n8*p*b*g41lv5*jdeej6r_!!1060894880.jpg_400x400.jpg'
+$result = $client->tools->spreadGet([
+    [
+        'url' => 'https://uland.taobao.com/quan/detail?sellerId=4051125533&activityId=8a18f770d12849f2bfcdc31c418e8a5c'
+    ],
+    [
+        'url' => 'http://temai.taobao.com'
+    ]
 ]);
 
 if ($result == false) {

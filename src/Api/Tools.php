@@ -28,6 +28,10 @@ class Tools extends GateWay
      */
     public function getActivityLink(array $params)
     {
+        if (!isset($params['adzone_id'])) {
+            $adzoneIds = explode('-', $this->globalConfig['pid']);
+            $params['adzone_id'] = $adzoneIds[3];
+        }
         $result = $this->send('taobao.tbk.activitylink.get', $params);
         return $result;
     }
@@ -40,10 +44,16 @@ class Tools extends GateWay
      */
     public function spreadGet(array $urls)
     {
-        $params['requests'] = [
-            'url' => $urls
-        ];
+        $params['requests'] = \json_encode($urls);
         $result = $this->send('taobao.tbk.spread.get', $params);
-        return $result;
+        if (empty($result)) {
+            return false;
+        }
+        $lists = $result['results']['tbk_spread'];
+        $count = $result['total_results'];
+        return [
+            'lists' => ($count == 1) ? \current($lists) : $lists,
+            'count' => $count
+        ];
     }
 }
