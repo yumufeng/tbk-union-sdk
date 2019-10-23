@@ -28,7 +28,7 @@ class Order extends GateWay
      */
     public function refund(array $da)
     {
-        $params['search_option'] = $da;
+        $params['search_option'] = \json_encode($da);
         $result = $this->send('taobao.tbk.relation.refund', $da);
         return isset($result['result']['data']) ? $result['result']['data'] : false;
     }
@@ -41,7 +41,7 @@ class Order extends GateWay
      */
     public function punish(array $da)
     {
-        $params['af_order_option'] = $da;
+        $params['af_order_option'] = \json_encode($da);
         $result = $this->send('taobao.tbk.dg.punish.order.get', $params);
         if (empty($result)) {
             return $result;
