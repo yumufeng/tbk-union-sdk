@@ -62,4 +62,16 @@ class Item extends GateWay
         $result = $this->send('taobao.tbk.item.word.get', $params);
         return \current($result);
     }
+
+    /**
+     * taobao.tbk.privilege.get( 淘宝客-服务商-单品券高效转链 )
+     * @link https://open.taobao.com/api.htm?docId=28625&docType=2
+     * @param array $params
+     * @return bool
+     */
+    public function privilegeGet(array $params)
+    {
+        $result = $this->send('taobao.tbk.privilege.get', $params);
+        return isset($result['result']['data']) ? $result['result']['data'] : false;
+    }
 }
