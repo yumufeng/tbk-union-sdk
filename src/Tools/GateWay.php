@@ -5,6 +5,7 @@ namespace TaobaoUnionSdk\Tools;
 
 
 use TaobaoUnionSdk\TbkFatory;
+use yumufeng\curl\Curl;
 
 class GateWay
 {
@@ -62,7 +63,7 @@ class GateWay
         $sysParams["sign"] = $this->generateSign(array_merge($params, $sysParams), $this->globalConfig['secretKey']);
         $requestUrl = $this->unionUrl . '?' . http_build_query($sysParams);
         try {
-            $resp = Helpers::curl_post($requestUrl, $params);
+            $resp = Curl::curl_post($requestUrl, $params);
             $info = json_decode($resp, true);
             if ($this->globalConfig['sandbox']) {
                 var_dump($info);
