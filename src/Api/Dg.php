@@ -59,7 +59,7 @@ class Dg extends GateWay
         if (empty($result)) {
             return $result;
         }
-        $da['lists'] = isset($result['result_list']['map_data']) ? $result['result_list']['map_data']  false;
+        $da['lists'] = isset($result['result_list']['map_data']) ? $result['result_list']['map_data'] : false;
         $da['total'] = $result['total_results'];
         return $da;
     }
