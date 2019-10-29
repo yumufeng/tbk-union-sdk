@@ -13,11 +13,13 @@ $config = [
 
 $client = new \TaobaoUnionSdk\TbkFatory($config);
 
-$result = $client->dg->material_optimus([
-    'page_size' => 10,
-    'page_no' => 1,
-    'adzone_id' => 98491150375,
-    'material_id' => 26203
+$result = $client->tools->spreadGet([
+    [
+        'url' => 'https://uland.taobao.com/quan/detail?sellerId=4051125533&activityId=8a18f770d12849f2bfcdc31c418e8a5c'
+    ],
+    [
+        'url' => 'http://temai.taobao.com'
+    ]
 ]);
 
 if ($result == false) {

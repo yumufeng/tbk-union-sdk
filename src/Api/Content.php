@@ -22,7 +22,7 @@ class Content extends GateWay
     public function get(array $params)
     {
         $result = $this->send('taobao.tbk.content.get', $params);
-        return isset($result['results']['data']) ? $result['results']['data'] : false;
+        return isset($result['result']['data']) ? $result['result']['data'] : false;
     }
 
     /**
@@ -33,7 +33,10 @@ class Content extends GateWay
      */
     public function effect(array $params)
     {
-        $op['option'] = $params;
+        if (!isset($params['pid'])){
+            $params['pid'] = $this->globalConfig['pid'];
+        }
+        $op['option'] = \json_encode($params);
         $result = $this->send('taobao.tbk.content.effect.get', $op);
         return isset($result['result']['model']) ? $result['result']['model'] : false;
     }

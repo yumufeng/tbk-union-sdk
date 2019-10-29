@@ -59,6 +59,7 @@ class GateWay
         $sysParams["format"] = $this->globalConfig['format'];
         $sysParams["sign_method"] = $this->globalConfig['signMethod'];
         $sysParams["method"] = $method;
+        $sysParams["session"] = $this->globalConfig['session'];
         $sysParams["timestamp"] = \date("Y-m-d H:i:s");
         $sysParams["sign"] = $this->generateSign(array_merge($params, $sysParams), $this->globalConfig['secretKey']);
         $requestUrl = $this->unionUrl . '?' . http_build_query($sysParams);

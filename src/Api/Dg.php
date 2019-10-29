@@ -30,7 +30,7 @@ class Dg extends GateWay
     public function newuser_order_sum(array $params)
     {
         $result = $this->send('taobao.tbk.dg.newuser.order.sum', $params);
-        $da = $result['results']['data'] ?? false;
+        $da = isset($result['results']['data']) ? $result['results']['data'] : false;
         return $da;
     }
 
@@ -44,7 +44,7 @@ class Dg extends GateWay
     public function material_optimus(array $params)
     {
         $result = $this->send('taobao.tbk.dg.optimus.material', $params);
-        return $result['result_list']['map_data'] ?? false;
+        return isset($result['result_list']['map_data']) ? $result['result_list']['map_data'] : false;
     }
 
     /**
@@ -59,7 +59,7 @@ class Dg extends GateWay
         if (empty($result)) {
             return $result;
         }
-        $da['lists'] = $result['result_list']['map_data'] ?? false;
+        $da['lists'] = isset($result['result_list']['map_data']) ? $result['result_list']['map_data']  false;
         $da['total'] = $result['total_results'];
         return $da;
     }
