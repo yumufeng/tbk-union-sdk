@@ -70,8 +70,8 @@ class GateWay
                 var_dump($info);
             }
             if (isset($info['error_response'])) {
-                $code = isset($info['error_response']['code']) ? $info['error_response']['code'] : $info['error_response']['sub_code'];
-                $msg = isset($info['error_response']['msg']) ? $info['error_response']['msg'] : $info['error_response']['sub_msg'];
+                $code = isset($info['error_response']['sub_code']) ? $info['error_response']['sub_code'] : $info['error_response']['code'];
+                $msg = isset($info['error_response']['sub_msg']) ? $info['error_response']['sub_msg'] : $info['error_response']['msg'];
                 $this->tbkFatory->setError($code . ' ' . $msg);
                 return false;
             }
