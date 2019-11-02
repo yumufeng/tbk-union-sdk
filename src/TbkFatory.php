@@ -55,6 +55,12 @@ class TbkFatory
         }
     }
 
+    public function setConfig(array $config)
+    {
+        $this->config = array_merge($this->config, $config);
+        return $this;
+    }
+
     public function setError($message)
     {
         $this->error = $message;
