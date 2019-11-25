@@ -10,8 +10,6 @@ PHP =>7.0
 
 ```./configure --enable-openssl```
 
-加入淘宝客渠道：https://mos.m.taobao.com/inviter/register?inviterCode=XJCFRV&src=pub&app=common
-
 ## 使用
 
 ```php
