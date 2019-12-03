@@ -29,7 +29,7 @@ class Tools extends GateWay
     public function getActivityLink(array $params)
     {
         if (!isset($params['adzone_id'])) {
-            $adzoneIds = explode('-', $this->globalConfig['pid']);
+            $adzoneIds = explode('_', $this->globalConfig['pid']);
             $params['adzone_id'] = $adzoneIds[3];
         }
         $result = $this->send('taobao.tbk.activitylink.get', $params);
